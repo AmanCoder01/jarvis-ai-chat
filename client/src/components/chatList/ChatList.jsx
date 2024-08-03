@@ -11,6 +11,8 @@ const ChatList = () => {
             }).then((res) => res.json()),
     });
 
+    // console.log(data);
+
     return (
         <div className="chatList">
             <span className="title">DASHBOARD</span>
@@ -24,7 +26,7 @@ const ChatList = () => {
                     ? "Loading..."
                     : error
                         ? "Something went wrong!"
-                        : data?.map((chat) => (
+                        : data?.chats?.length === 0 ? <p>Search Something</p> : data?.chats?.map((chat) => (
                             <Link to={`/dashboard/chats/${chat._id}`} key={chat._id}>
                                 {chat.title}
                             </Link>

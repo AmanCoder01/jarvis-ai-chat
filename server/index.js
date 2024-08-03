@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import path from "path";
-import url, { fileURLToPath } from "url";
+import dotenv from "dotenv"
 import ImageKit from "imagekit";
 import mongoose from "mongoose";
 import Chat from "./models/chat.js";
@@ -11,8 +11,7 @@ import { ClerkExpressRequireAuth } from "@clerk/clerk-sdk-node";
 const port = process.env.PORT || 3000;
 const app = express();
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+dotenv.config();
 
 app.use(
     cors({
@@ -20,7 +19,6 @@ app.use(
         credentials: true,
     })
 );
-
 app.use(express.json());
 
 const connect = async () => {
@@ -32,12 +30,17 @@ const connect = async () => {
     }
 };
 
+
 const imagekit = new ImageKit({
     urlEndpoint: process.env.IMAGE_KIT_ENDPOINT,
     publicKey: process.env.IMAGE_KIT_PUBLIC_KEY,
     privateKey: process.env.IMAGE_KIT_PRIVATE_KEY,
 });
 
+
+
+
+//routes
 app.get("/api/upload", (req, res) => {
     const result = imagekit.getAuthenticationParameters();
     res.send(result);
@@ -98,9 +101,15 @@ app.get("/api/userchats", ClerkExpressRequireAuth(), async (req, res) => {
     const userId = req.auth.userId;
 
     try {
-        const userChats = await UserChats.find({ userId });
+        const userChats = await UserChats.findOne({ userId });
 
-        res.status(200).send(userChats[0].chats);
+        if (!userChats) {
+            return res.status(400).json({
+                message: "User chats not found",
+            })
+        }
+
+        return res.status(200).send(userChats);
     } catch (err) {
         console.log(err);
         res.status(500).send("Error fetching userchats!");
@@ -129,7 +138,8 @@ app.put("/api/chats/:id", ClerkExpressRequireAuth(), async (req, res) => {
         ...(question
             ? [{ role: "user", parts: [{ text: question }], ...(img && { img }) }]
             : []),
-        { role: "model", parts: [{ text: answer }] },
+        ...(answer
+            ? [{ role: "model", parts: [{ text: answer }] }] : [])
     ];
 
     try {
@@ -156,11 +166,15 @@ app.use((err, req, res, next) => {
 });
 
 // // PRODUCTION
-// app.use(express.static(path.join(__dirname, "../client/dist")));
 
-// app.get("*", (req, res) => {
-//     res.sendFile(path.join(__dirname, "../client/dist", "index.html"));
-// });
+const __dirname = path.resolve();
+
+app.use(express.static(path.join(__dirname, "/client/dist")))
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
+})
+
 
 app.listen(port, () => {
     connect();

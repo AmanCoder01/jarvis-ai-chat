@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Dashboard.css"
 
 export const DashboardPage = () => {
@@ -22,10 +22,12 @@ export const DashboardPage = () => {
         },
         onSuccess: (id) => {
             // Invalidate and refetch
+            console.log(id);
             queryClient.invalidateQueries({ queryKey: ["userChats"] });
             navigate(`/dashboard/chats/${id}`);
         },
     });
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -34,6 +36,9 @@ export const DashboardPage = () => {
 
         mutation.mutate(text);
     };
+
+
+
 
     return (
         <div className="dashboardPage">
@@ -45,7 +50,7 @@ export const DashboardPage = () => {
                 <div className="options">
                     <div className="option">
                         <img src="/chat.png" alt="" />
-                        <span>Create a New Chat</span>
+                        <Link to="/dashboard">Create a New Chat</Link>
                     </div>
                     <div className="option">
                         <img src="/image.png" alt="" />

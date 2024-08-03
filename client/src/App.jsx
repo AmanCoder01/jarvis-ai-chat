@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import { HomePage } from "./pages/homepage/HomePage";
 import { DashboardPage } from "./pages/dashboard/DashboardPage";
-import { ChatPage } from "./pages/chatpage/ChatPage";
+import { ChatPage } from "./pages/chatpage/ChatPage.jsx";
 import { RootLayout } from "./layouts/rootLayout/RootLayout";
 import { DashboardLayout } from "./layouts/dashboardLayout/DashboardLayout";
 import { SignInPage } from "./pages/signin/SignInPage";

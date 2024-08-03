@@ -18,10 +18,10 @@ const NewPrompt = ({ data }) => {
 
     const chat = model.startChat({
         history: [
-            data?.history.map(({ role, parts }) => ({
-                role,
-                parts: [{ text: parts[0].text }],
-            })),
+            // data?.history?.map(({ role, parts }) => ({
+            //     role,
+            //     parts: [{ text: parts[0].text }],
+            // })),
         ],
         generationConfig: {
             // maxOutputTokens: 100,
@@ -72,6 +72,8 @@ const NewPrompt = ({ data }) => {
         },
     });
 
+
+
     const add = async (text, isInitial) => {
         if (!isInitial) setQuestion(text);
 
@@ -82,7 +84,7 @@ const NewPrompt = ({ data }) => {
             let accumulatedText = "";
             for await (const chunk of result.stream) {
                 const chunkText = chunk.text();
-                console.log(chunkText);
+                // console.log(chunkText);
                 accumulatedText += chunkText;
                 setAnswer(accumulatedText);
             }
@@ -92,6 +94,8 @@ const NewPrompt = ({ data }) => {
             console.log(err);
         }
     };
+
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
