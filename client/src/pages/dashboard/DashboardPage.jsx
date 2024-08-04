@@ -2,6 +2,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Link, useNavigate } from "react-router-dom";
 import "./Dashboard.css"
 
+
 export const DashboardPage = () => {
 
 
@@ -21,8 +22,8 @@ export const DashboardPage = () => {
             }).then((res) => res.json());
         },
         onSuccess: (id) => {
+
             // Invalidate and refetch
-            console.log(id);
             queryClient.invalidateQueries({ queryKey: ["userChats"] });
             navigate(`/dashboard/chats/${id}`);
         },
@@ -36,7 +37,6 @@ export const DashboardPage = () => {
 
         mutation.mutate(text);
     };
-
 
 
 

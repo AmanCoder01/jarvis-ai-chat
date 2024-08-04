@@ -6,29 +6,28 @@ const ChatList = () => {
     const { isPending, error, data } = useQuery({
         queryKey: ["userChats"],
         queryFn: () =>
-            fetch(`${import.meta.env.VITE_API_URL}/api/userchats`, {
+            fetch(`${import.meta.env.VITE_API_URL}/api/all-chats`, {
                 credentials: "include",
             }).then((res) => res.json()),
     });
 
-    // console.log(data);
 
     return (
         <div className="chatList">
-            <span className="title">DASHBOARD</span>
+            <span className=" text-xs font-bold">DASHBOARD</span>
             <Link to="/dashboard">Create a new Chat</Link>
             <Link to="/">Explore Lama AI</Link>
             <Link to="/">Contact</Link>
             <hr />
-            <span className="title">RECENT CHATS</span>
+            <span className="text-xs font-bold">RECENT CHATS</span>
             <div className="list">
                 {isPending
                     ? "Loading..."
                     : error
                         ? "Something went wrong!"
-                        : data?.chats?.length === 0 ? <p>Search Something</p> : data?.chats?.map((chat) => (
-                            <Link to={`/dashboard/chats/${chat._id}`} key={chat._id}>
-                                {chat.title}
+                        : data?.length === 0 ? <p>Search Something</p> : data?.map((chat) => (
+                            <Link to={`/dashboard/chats/${chat.chat}`} key={chat._id}>
+                                {chat?.title}
                             </Link>
                         ))}
             </div>

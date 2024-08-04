@@ -1,11 +1,12 @@
 .rootLayout {
-  padding: 16px 64px;
+  /* padding: 16px 64px; */
   height: 100vh;
   display: flex;
   flex-direction: column;
 
   header {
     display: flex;
+    padding: 12px 64px;
     align-items: center;
     justify-content: space-between;
 

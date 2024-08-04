@@ -3,20 +3,23 @@ import React, { useEffect } from 'react'
 import { Outlet, useNavigate } from 'react-router-dom'
 import ChatList from '../../components/chatList/ChatList';
 import "./DashboardLayout.css"
+import { UserData } from '../../context/userContext';
 
 export const DashboardLayout = () => {
 
-    const { userId, isLoaded } = useAuth();
+    const { user, setUser, userRawData, setUserRawData } = UserData();
+
 
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (isLoaded && !userId) {
-            navigate("/sign-in");
+        if (!user) {
+            navigate("/sign-in")
         }
-    }, [isLoaded, userId, navigate]);
+    }, [user])
 
-    if (!isLoaded) return "Loading...";
+
+
 
 
     return (

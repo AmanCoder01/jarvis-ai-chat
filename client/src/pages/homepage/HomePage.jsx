@@ -2,9 +2,12 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import "./HomePage.css";
 import { TypeAnimation } from "react-type-animation";
+import { UserData } from '../../context/userContext';
 
 export const HomePage = () => {
     const [typingStatus, setTypingStatus] = useState("human1");
+    const { user, setUser, userRawData, setUserRawData } = UserData();
+
 
     return (
         <div className="homepage">

@@ -9,8 +9,9 @@ import { DashboardPage } from "./pages/dashboard/DashboardPage";
 import { ChatPage } from "./pages/chatpage/ChatPage.jsx";
 import { RootLayout } from "./layouts/rootLayout/RootLayout";
 import { DashboardLayout } from "./layouts/dashboardLayout/DashboardLayout";
-import { SignInPage } from "./pages/signin/SignInPage";
-import { SignUpPage } from "./pages/signup/SignUpPage";
+import { SigninPage } from "./pages/signin/SignInPage.jsx";
+import { SignUpPage } from "./pages/signup/SignUpPage.jsx";
+import { Verify } from "./pages/signup/Verify.jsx";
 
 
 const router = createBrowserRouter([
@@ -23,11 +24,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/sign-in",
-        element: <SignInPage />
+        element: <SigninPage />
       },
       {
         path: "/sign-up",
         element: <SignUpPage />
+      },
+      {
+        path: "/verify",
+        element: <Verify />
       },
       {
         element: <DashboardLayout />,
