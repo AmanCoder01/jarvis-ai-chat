@@ -22,7 +22,6 @@ export const DashboardPage = () => {
             }).then((res) => res.json());
         },
         onSuccess: (id) => {
-
             // Invalidate and refetch
             queryClient.invalidateQueries({ queryKey: ["userChats"] });
             navigate(`/dashboard/chats/${id}`);

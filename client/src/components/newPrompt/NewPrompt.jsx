@@ -119,7 +119,7 @@ const NewPrompt = ({ data }) => {
     }, []);
 
     return (
-        <>
+        <div className="">
             {/* ADD NEW CHAT */}
             {img.isLoading && <div className="">Loading...</div>}
             {img.dbData?.filePath && (
@@ -137,7 +137,7 @@ const NewPrompt = ({ data }) => {
                 </div>
             )}
             <div className="endChat" ref={endRef}></div>
-            <form className="newForm" onSubmit={handleSubmit} ref={formRef}>
+            <form className="newForm w-full md:w-[50%]" onSubmit={handleSubmit} ref={formRef}>
                 <Upload setImg={setImg} />
                 <input id="file" type="file" multiple={false} hidden />
                 <input type="text" name="text" placeholder="Ask anything..." />
@@ -145,7 +145,7 @@ const NewPrompt = ({ data }) => {
                     <img src="/arrow.png" alt="" />
                 </button>
             </form>
-        </>
+        </div>
     );
 };
 

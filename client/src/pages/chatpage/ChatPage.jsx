@@ -23,16 +23,15 @@ export const ChatPage = () => {
             }).then((res) => res.json()),
     });
 
-    console.log(data);
 
     return (
         <div className="chatPage">
             <div className="wrapper">
-                <div className="chat">
+                <div className="flex flex-col gap-[15px] w-[90%] md:w-[50%] ">
                     {isPending
                         ? "Loading..."
                         : data?.history?.map((message, i) => (
-                            <div key={i}>
+                            <div key={i} className="mt-4">
                                 {message.img && (
                                     <IKImage
                                         urlEndpoint={import.meta.env.VITE_IMAGE_KIT_ENDPOINT}
@@ -46,7 +45,7 @@ export const ChatPage = () => {
                                 )}
                                 <div
                                     className={
-                                        message.role === "user" ? "message user" : "message"
+                                        message.role === "user" ? "message user" : "message overflow-x-auto"
                                     }
                                 >
                                     <Markdown>{message.role === "user" ? "Q . " + message?.parts[0]?.text : message?.parts[0]?.text}</Markdown>
