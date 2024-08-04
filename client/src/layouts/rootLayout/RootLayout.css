@@ -23,6 +23,12 @@
     }
   }
 
+  @media screen and (max-width: 1024px) {
+    header {
+      padding: 12px 24px;
+    }
+  }
+
   main {
     flex: 1;
     overflow: hidden;

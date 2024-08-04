@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { UserContext } from '../../context/userContext';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import { Loader } from '../../components/Loader';
 
 
 const queryClient = new QueryClient();
@@ -51,7 +52,7 @@ export const RootLayout = () => {
                         </div>
                     </header>
                     <main>
-                        {Loading ? <h1>Loading...</h1> : <Outlet />}
+                        {Loading ? <Loader /> : <Outlet />}
                     </main>
                 </div>
             </QueryClientProvider>

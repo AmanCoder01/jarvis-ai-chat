@@ -79,6 +79,8 @@ export const SigninPage = () => {
 
     return (
         <div className='relative w-full h-screen'>
+            <img src="./istockphoto.jpg" alt="" className='signUpPage' />
+
             <div className='bg-black text-gray-200 max-w-md top-20 rounded-lg p-8 mx-auto  absolute left-0 right-0'>
                 <h2 className='font-bold text-2xl text-center mb-8'>Sign In</h2>
 

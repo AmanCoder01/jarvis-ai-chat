@@ -11,6 +11,7 @@
     align-items: center;
     justify-content: center;
     width: 50%;
+    margin: 0 auto;
     gap: 50px;
 
     .logo {
@@ -22,14 +23,6 @@
       img {
         width: 64px;
         height: 64px;
-      }
-
-      h1 {
-        font-size: 64px;
-        background: linear-gradient(to right, #217bfe, #e55571);
-        background-clip: text;
-        -webkit-background-clip: text;
-        color: transparent;
       }
     }
 
@@ -101,4 +94,12 @@
       }
     }
   }
+}
+
+.logoText {
+  font-size: 64px;
+  background: linear-gradient(to right, #217bfe, #e55571);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
 }

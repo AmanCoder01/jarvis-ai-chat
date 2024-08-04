@@ -1,8 +1,6 @@
-import { useAuth } from '@clerk/clerk-react';
 import React, { useEffect } from 'react'
 import { Outlet, useNavigate } from 'react-router-dom'
 import ChatList from '../../components/chatList/ChatList';
-import "./DashboardLayout.css"
 import { UserData } from '../../context/userContext';
 
 export const DashboardLayout = () => {
@@ -23,11 +21,11 @@ export const DashboardLayout = () => {
 
 
     return (
-        <div className="dashboardLayout">
-            <div className="menu">
+        <div className="flex justify-center h-full">
+            <div className="w-[0%] md:w-[25%] hidden md:block pt-5">
                 <ChatList />
             </div>
-            <div className="content">
+            <div className="w-full md:w-[75%] mx-auto bg-[#12101b]" >
                 <Outlet />
             </div>
         </div>

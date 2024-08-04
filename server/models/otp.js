@@ -26,10 +26,10 @@ async function sendVerificationEmail(email, otp) {
     try {
         const mailResponse = await mailSender(
             email,
-            "Verification Email",
+            "Verification Email By Jarvis Ai",
             `
             <div style="font-family: Poppins, sans-serif; max-width: 600px; margin: 0 auto; background-color: #f9f9f9; padding: 20px; border: 1px solid #ccc; border-radius: 5px;">
-        <h1 style="font-size: 22px; font-weight: 500; color: #854CE6; text-align: center; margin-bottom: 30px;">Verify Your PODSTREAM Account</h1>
+        <h1 style="font-size: 22px; font-weight: 500; color: #854CE6; text-align: center; margin-bottom: 30px;">Verify Your Jarvis AI Account</h1>
         <div style="background-color: #FFF; border: 1px solid #e5e5e5; border-radius: 5px; box-shadow: 0px 3px 6px rgba(0,0,0,0.05);">
             <div style="background-color: #854CE6; border-top-left-radius: 5px; border-top-right-radius: 5px; padding: 20px 0;">
                 <h2 style="font-size: 28px; font-weight: 500; color: #FFF; text-align: center; margin-bottom: 10px;">Verification Code</h2>
@@ -37,14 +37,14 @@ async function sendVerificationEmail(email, otp) {
             </div>
             <div style="padding: 30px;">
                 <p style="font-size: 14px; color: #666; margin-bottom: 20px;">Dear User,</p>
-                <p style="font-size: 14px; color: #666; margin-bottom: 20px;">Thank you for creating a PODSTREAM account. To activate your account, please enter the following verification code:</p>
+                <p style="font-size: 14px; color: #666; margin-bottom: 20px;">Thank you for creating a Jarvis AI account. To activate your account, please enter the following verification code:</p>
                 <p style="font-size: 20px; font-weight: 500; color: #666; text-align: center; margin-bottom: 30px; color: #854CE6;">${otp}</p>
-                <p style="font-size: 12px; color: #666; margin-bottom: 20px;">Please enter this code in the PODSTREAM app to activate your account.</p>
-                <p style="font-size: 12px; color: #666; margin-bottom: 20px;">If you did not create a PODSTREAM account, please disregard this email.</p>
+                <p style="font-size: 12px; color: #666; margin-bottom: 20px;">Please enter this code in the Jarvis AI app to activate your account.</p>
+                <p style="font-size: 12px; color: #666; margin-bottom: 20px;">If you did not create a Jarvis AI account, please disregard this email.</p>
             </div>
         </div>
         <br>
-        <p style="font-size: 16px; color: #666; margin-bottom: 20px; text-align: center;">Best regards,<br>The Podstream Team</p>
+        <p style="font-size: 16px; color: #666; margin-bottom: 20px; text-align: center;">Best regards,<br>The JARVIS AI Team</p>
     </div>
             `
         );

@@ -43,30 +43,32 @@ export const DashboardPage = () => {
     return (
         <div className="dashboardPage">
             <div className="texts">
-                <div className="logo">
-                    <img src="/logo.png" alt="" />
-                    <h1>JARVIS AI</h1>
+                <div className="flex items-center gap-[30px] md:gap-[50px] justify-center opacity-40">
+                    <img src="/logo.png" alt="" className="w-[64px] h-[64px]" />
+                    <h1 className="logoText">JARVIS AI</h1>
                 </div>
-                <div className="options">
-                    <div className="option">
+                <div className="flex items-center gap-[30px] md:gap-[50px] justify-center">
+                    <div className="border p-4 rounded-2xl h-[12rem] border-gray-600 text-center">
                         <img src="/chat.png" alt="" />
                         <Link to="/dashboard">Create a New Chat</Link>
                     </div>
-                    <div className="option">
+                    <div className="border p-4 rounded-2xl h-[12rem] border-gray-600 text-center">
                         <img src="/image.png" alt="" />
                         <span>Analyze Images</span>
                     </div>
-                    <div className="option">
+                    <div className="border p-4 rounded-2xl h-[12rem] border-gray-600 text-center">
                         <img src="/code.png" alt="" />
                         <span>Help me with my Code</span>
                     </div>
                 </div>
             </div>
-            <div className="formContainer">
-                <form onSubmit={handleSubmit}>
-                    <input type="text" name="text" placeholder="Ask me anything..." />
+            <div className="w-full md:w-[50%] ">
+                <form onSubmit={handleSubmit} className="flex items-center relative">
+                    <input type="text" name="text" placeholder="Ask me anything..."
+                        className="py-4 md:py-5 px-6 bg-[#2c2937] rounded-2xl w-full  outline-none border-none text-md  md:text-lg"
+                    />
                     <button>
-                        <img src="/arrow.png" alt="" />
+                        <img src="/arrow.png" alt="" className="w-9 p-2 h-9 bg-[#605e68] rounded-full absolute bottom-2 md:bottom-4  right-3" />
                     </button>
                 </form>
             </div>
