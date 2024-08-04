@@ -6,12 +6,14 @@ import { UserContext } from '../../context/userContext';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { Loader } from '../../components/Loader';
+import { HiOutlineMenuAlt2 } from "react-icons/hi";
 
 
 const queryClient = new QueryClient();
 
 export const RootLayout = () => {
     const [user, setUser] = useState(null);
+    const [menu, setMenu] = useState(false);
     const [userRawData, setUserRawData] = useState(null);
     const [Loading, setLoading] = useState(false);
 
@@ -39,7 +41,7 @@ export const RootLayout = () => {
 
 
     return (
-        <UserContext.Provider value={{ user, setUser, userRawData, setUserRawData }}>
+        <UserContext.Provider value={{ user, setUser, userRawData, setUserRawData, menu, setMenu }}>
             <QueryClientProvider client={queryClient}>
                 <div className="rootLayout">
                     <header>
@@ -47,6 +49,9 @@ export const RootLayout = () => {
                             <img src="/logo.png" alt="" />
                             <span>JARVIS AI</span>
                         </Link>
+                        {<div onClick={() => setMenu(!menu)} className='block md:hidden'>
+                            <HiOutlineMenuAlt2 size={28} />
+                        </div>}
                         <div className="user">
                             {user && <img src={user?.img} alt='profile' className='h-8 w-8 rounded-full' />}
                         </div>

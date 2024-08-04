@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import "./chatList.css";
 import { useQuery } from "@tanstack/react-query";
+import { UserData } from "../../context/userContext";
 
 const ChatList = () => {
     const { isPending, error, data } = useQuery({
@@ -11,6 +12,7 @@ const ChatList = () => {
             }).then((res) => res.json()),
     });
 
+    const { user, setUser, userRawData, setUserRawData, menu, setMenu } = UserData();
 
     return (
         <div className="chatList">

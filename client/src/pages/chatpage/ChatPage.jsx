@@ -31,7 +31,7 @@ export const ChatPage = () => {
                     {isPending
                         ? "Loading..."
                         : data?.history?.map((message, i) => (
-                            <div key={i} className="mt-4">
+                            <div key={i} className="mt-4 ">
                                 {message.img && (
                                     <IKImage
                                         urlEndpoint={import.meta.env.VITE_IMAGE_KIT_ENDPOINT}
@@ -44,9 +44,7 @@ export const ChatPage = () => {
                                     />
                                 )}
                                 <div
-                                    className={
-                                        message.role === "user" ? "message user" : "message overflow-x-auto"
-                                    }
+                                    className={`${message.role === "user" ? "message user" : "message"} overflow-x-auto`}
                                 >
                                     <Markdown>{message.role === "user" ? "Q . " + message?.parts[0]?.text : message?.parts[0]?.text}</Markdown>
                                 </div>
