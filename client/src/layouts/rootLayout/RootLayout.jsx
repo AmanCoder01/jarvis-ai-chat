@@ -6,7 +6,9 @@ import { UserContext } from '../../context/userContext';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { Loader } from '../../components/Loader';
-import { HiOutlineMenuAlt2 } from "react-icons/hi";
+import { HiMenuAlt2 } from "react-icons/hi";
+import { MobileChatList } from '../../components/chatList/MobileChatList';
+
 
 
 const queryClient = new QueryClient();
@@ -39,6 +41,9 @@ export const RootLayout = () => {
         !user && fetchUser();
     }, [user])
 
+    console.log(menu);
+
+
 
     return (
         <UserContext.Provider value={{ user, setUser, userRawData, setUserRawData, menu, setMenu }}>
@@ -49,13 +54,15 @@ export const RootLayout = () => {
                             <img src="/logo.png" alt="" />
                             <span>JARVIS AI</span>
                         </Link>
-                        {<div onClick={() => setMenu(!menu)} className='block md:hidden'>
-                            <HiOutlineMenuAlt2 size={28} />
-                        </div>}
-                        <div className="user">
+
+                        <div className="user flex items-center gap-2">
                             {user && <img src={user?.img} alt='profile' className='h-8 w-8 rounded-full' />}
+                            {user && <div onClick={() => setMenu(!menu)} className='block md:hidden'>
+                                <HiMenuAlt2 size={28} />
+                            </div>}
                         </div>
                     </header>
+
                     <main>
                         {Loading ? <Loader /> : <Outlet />}
                     </main>

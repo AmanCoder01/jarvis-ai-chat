@@ -17,20 +17,17 @@ export const DashboardLayout = () => {
         }
     }, [user])
 
-    console.log(menu);
 
 
 
 
     return (
         <div className="flex justify-center h-full relative">
-            <div className="w-[0%] md:w-[25%] hidden md:block pt-5">
+            <div className="w-[0%] md:w-[25%] ">
                 <ChatList />
             </div>
-            <div className='absolute left-0 h-full w-full z-50'>
-                {menu && <MobileChatList />}
-            </div>
-            <div className="w-full md:w-[75%] mx-auto bg-[#12101b]" >
+
+            <div className="w-full md:w-[75%] mx-auto bg-[#12101b] pt-6" >
                 <Outlet />
             </div>
         </div>

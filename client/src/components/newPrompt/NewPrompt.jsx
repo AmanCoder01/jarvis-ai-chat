@@ -126,13 +126,14 @@ const NewPrompt = ({ data }) => {
                 <IKImage
                     urlEndpoint={import.meta.env.VITE_IMAGE_KIT_ENDPOINT}
                     path={img.dbData?.filePath}
-                    width="380"
-                    transformation={[{ width: 380 }]}
+                    width="300"
+                    height="200"
+                    transformation={[{ width: 300, height: 200 }]}
                 />
             )}
             {question && <div className="message user">{question}</div>}
             {answer && (
-                <div className="message">
+                <div className="message overflow-x-auto">
                     <Markdown>{answer}</Markdown>
                 </div>
             )}
