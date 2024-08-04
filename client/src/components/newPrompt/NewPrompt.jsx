@@ -133,7 +133,7 @@ const NewPrompt = ({ data }) => {
             )}
             {question && <div className="message user">{question}</div>}
             {answer && (
-                <div className="message overflow-x-auto">
+                <div className="message overflow-x-auto ">
                     <Markdown>{answer}</Markdown>
                 </div>
             )}

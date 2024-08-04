@@ -41,8 +41,6 @@ export const RootLayout = () => {
         !user && fetchUser();
     }, [user])
 
-    console.log(menu);
-
 
 
     return (
@@ -62,7 +60,9 @@ export const RootLayout = () => {
                             </div>}
                         </div>
                     </header>
-
+                    {
+                        menu && user && <MobileChatList />
+                    }
                     <main>
                         {Loading ? <Loader /> : <Outlet />}
                     </main>

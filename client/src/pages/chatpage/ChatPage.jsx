@@ -27,24 +27,26 @@ export const ChatPage = () => {
     return (
         <div className="chatPage">
             <div className="wrapper">
-                <div className="flex flex-col gap-[15px] w-[90%] md:w-[50%] ">
+                <div className="flex flex-col gap-[15px] w-full md:w-[50%] ">
                     {isPending
                         ? "Loading..."
                         : data?.history?.map((message, i) => (
                             <div key={i} className="mt-4 ">
                                 {message.img && (
-                                    <IKImage
-                                        urlEndpoint={import.meta.env.VITE_IMAGE_KIT_ENDPOINT}
-                                        path={message.img}
-                                        height="250"
-                                        width="300"
-                                        transformation={[{ height: 250, width: 300 }]}
-                                        loading="lazy"
-                                        lqip={{ active: true, quality: 20 }}
-                                    />
+                                    <div className="ml-[20px] pb-2">
+                                        <IKImage
+                                            urlEndpoint={import.meta.env.VITE_IMAGE_KIT_ENDPOINT}
+                                            path={message.img}
+                                            height="250"
+                                            width="300"
+                                            transformation={[{ height: 250, width: 300 }]}
+                                            loading="lazy"
+                                            lqip={{ active: true, quality: 20 }}
+                                        />
+                                    </div>
                                 )}
                                 <div
-                                    className={`${message.role === "user" ? "message user" : "message"} overflow-x-auto`}
+                                    className={`${message.role === "user" ? "message user" : "message"} overflow-x-auto px-6`}
                                 >
                                     <Markdown>{message.role === "user" ? "Q . " + message?.parts[0]?.text : message?.parts[0]?.text}</Markdown>
                                 </div>
