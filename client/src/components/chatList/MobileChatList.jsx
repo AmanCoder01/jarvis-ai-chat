@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { UserData } from '../../context/userContext';
 import toast from 'react-hot-toast';
 import axios from 'axios';
+import "./chatList.css"
 
 export const MobileChatList = () => {
     const { isPending, error, data } = useQuery({
@@ -34,10 +35,10 @@ export const MobileChatList = () => {
 
 
     return (
-        <div className='absolute right-0 top-14 z-50 bg-black h-[92%] w-[60%] rounded-md md:hidden'>
+        <div className='absolute right-0 top-14 z-50 bg-black h-[92%] w-[60%] rounded-md md:hidden chatList'>
             <div className='p-2 pl-4 flex flex-col justify-center'>
-                <Link to="/" >
-                    Jarvis Ai
+                <Link to="/" className='text-xl font-bold '>
+                    JARVIS AI
                 </Link>
 
                 <span className=" text-xs font-bold">DASHBOARD</span>
@@ -48,7 +49,7 @@ export const MobileChatList = () => {
                 <div></div>
 
                 <span className="text-md font-bold ">RECENT CHATS</span>
-                <div className="flex flex-col justify-center gap-2 mt-2">
+                <div className="flex flex-col justify-center gap-2 mt-3 pt-24 list h-80 overflow-y-auto ">
                     {isPending
                         ? "Loading..."
                         : error
@@ -56,7 +57,7 @@ export const MobileChatList = () => {
                             : data?.length === 0 ? <p>Search Something</p> : data?.map((chat) => (
                                 <Link to={`/dashboard/chats/${chat.chat}`} onClick={() => {
                                     setMenu(false)
-                                }} key={chat._id}>
+                                }} key={chat._id} >
                                     <h1 className='text-[17px]'> {chat?.title}</h1>
                                 </Link>
                             ))}
@@ -65,7 +66,7 @@ export const MobileChatList = () => {
 
                 <div className='mt-8'>
                     <button onClick={handleLogout}
-                        className='hover:bg-gray-800 w-full py-2 rounded-lg'>Logout</button>
+                        className='hover:bg-[#2c2937] w-full py-2 rounded-lg'>Logout</button>
                 </div>
             </div>
         </div>

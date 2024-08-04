@@ -12,8 +12,6 @@ const ChatList = () => {
             }).then((res) => res.json()),
     });
 
-    console.log(data);
-    console.log(error);
 
 
     return (
