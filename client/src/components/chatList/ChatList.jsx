@@ -29,7 +29,7 @@ const ChatList = () => {
                     ? "Loading..."
                     : error
                         ? "Something went wrong!"
-                        : data?.length === 0 ? <p>Search Something</p> : data.data?.map((chat) => (
+                        : data?.length === 0 ? <p>Search Something</p> : data?.map((chat) => (
                             <Link to={`/dashboard/chats/${chat.chat}`} key={chat._id}>
                                 {chat?.title.slice(0, 30)}
                             </Link>

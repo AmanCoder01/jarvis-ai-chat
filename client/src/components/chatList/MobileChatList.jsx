@@ -53,7 +53,7 @@ export const MobileChatList = () => {
                         ? "Loading..."
                         : error
                             ? "Something went wrong!"
-                            : data?.length === 0 ? <p>Search Something</p> : data.data?.map((chat) => (
+                            : data?.length === 0 ? <p>Search Something</p> : data?.map((chat) => (
                                 <Link to={`/dashboard/chats/${chat.chat}`} onClick={() => {
                                     setMenu(false)
                                 }} key={chat._id}>
